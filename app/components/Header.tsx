@@ -1,0 +1,193 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import emailjs from "@emailjs/browser";
+import { layout, typography } from "@/lib/theme";
+
+export default function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleOpenModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    // EmailJS 설정 값들
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // 환경 변수 검증
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS 환경 변수가 설정되지 않았습니다.");
+      alert("이메일 전송 설정에 문제가 있습니다. 관리자에게 문의해주세요.");
+      setIsSending(false);
+      return;
+    }
+
+    try {
+      const templateParams = {
+        name: formData.name, // 템플릿의 {{name}} (From Name)에 사용
+        email: formData.email, // 템플릿의 {{email}} (Reply To)에 사용
+        message: formData.message, // 템플릿의 {{message}}에 사용
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      alert("문의가 성공적으로 전송되었습니다!");
+      handleCloseModal();
+    } catch (error) {
+      console.error("이메일 전송 실패:", error);
+      const errorMessage = error instanceof Error ? error.message : 
+                          (typeof error === 'object' && error !== null && 'text' in error) ? String(error.text) :
+                          "알 수 없는 오류";
+      alert(`이메일 전송에 실패했습니다.\n${errorMessage}`);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <>
+      <header className={layout.header}>
+        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            {/* 로고 (왼쪽) */}
+            <div className="flex items-center">
+              <Link href="/" className={typography.heading.logo}>
+                XIAssist
+              </Link>
+            </div>
+
+            {/* 네비게이션 (가운데) */}
+            <nav className="hidden md:flex items-center gap-8">
+              <button
+                onClick={handleOpenModal}
+                className="cursor-pointer text-base font-bold text-white md:text-lg hover:text-primary-500 transition-colors"
+              >
+                문의하기
+              </button>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* 이메일 모달 */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="relative w-full max-w-md mx-4 bg-[#121C21] rounded-lg border border-gray-700 p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleCloseModal}
+              className="absolute right-4 top-4 rounded-full bg-gray-700 p-2 text-gray-300 transition-colors hover:bg-gray-600 hover:text-white"
+              aria-label="닫기"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <h2 className="text-2xl font-bold text-white mb-6">문의하기</h2>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  이름
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  placeholder="이름을 입력하세요"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  이메일
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  placeholder="이메일을 입력하세요"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  메시지
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                  placeholder="문의 내용을 입력하세요"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="w-full py-3 bg-primary-500 hover:bg-primary-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+              >
+                {isSending ? "전송 중..." : "이메일 보내기"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
