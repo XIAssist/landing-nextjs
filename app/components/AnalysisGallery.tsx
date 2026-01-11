@@ -23,13 +23,13 @@ export default function AnalysisGallery({
       id: 1, 
       prompt: "첫 번째 예시 이미지 프롬프트입니다",
       src: "/img/analysisgallery/capture.png",
-      hoverText: "기존 Pacs 영상 그대로 사용"
+      hoverText: "기존 Pacs 영상에 적용"
     },
     { 
       id: 2, 
       prompt: "두 번째 예시 이미지 프롬프트입니다",
       src: "/img/analysisgallery/analysis.png",
-      hoverText: "검증된 의학논문 공식 사용"
+      hoverText: "검증된 의학공식 인용"
     },
   ];
 

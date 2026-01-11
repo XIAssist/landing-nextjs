@@ -91,14 +91,14 @@ export const layout = {
 
   // Features 컴포넌트
   features: {
-    section: 'flex min-h-screen items-center py-20 lg:py-32',
+    section: 'flex min-h-screen items-center py-10 lg:py-32',
     container: 'mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8',
     grid: 'grid gap-0 lg:grid-cols-3 lg:items-center',
   },
   
   // Gallery 컴포넌트
   gallery: {
-    section: 'w-full bg-[#121C21] py-20 lg:py-16',
+    section: 'w-full bg-[#121C21] py-10 lg:py-16',
     header: 'mb-12 text-center',
     title: 'mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl',
     subtitle: 'text-lg text-gray-300 md:text-xl',
@@ -109,7 +109,7 @@ export const layout = {
   
   // ValueProposition 컴포넌트
   valueProposition: {
-    section: 'flex items-center py-20 lg:py-16',
+    section: 'flex items-center py-10 lg:py-16',
     content: 'mx-auto max-w-4xl text-center',
     subtitle: 'mb-8 text-2xl font-bold text-gray-400 md:text-3xl lg:text-4xl',
     title: 'text-4xl font-bold text-white md:text-5xl lg:text-6xl leading-[1.6]',
