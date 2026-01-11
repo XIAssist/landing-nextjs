@@ -3,7 +3,7 @@ import { layout, typography } from "@/lib/theme";
 
 export default function Footer() {
   return (
-    <footer className={layout.footer}>
+    <footer className={layout.footer.section}>
       <div className={layout.container}>
         <div className="grid gap-8 md:grid-cols-2">
           {/* 좌측: 회사 정보 */}
@@ -25,7 +25,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className={typography.body.footerCopyright}>
-              © 2025 XIAssist. All rights reserved
+              © 2026 XIAssist. All rights reserved
             </p>
           </div>
         </div>

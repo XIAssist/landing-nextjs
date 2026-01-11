@@ -15,9 +15,9 @@ export default function Features() {
   };
 
   return (
-    <section className={`flex min-h-screen items-center ${tailwindColors.background} py-20 lg:py-32`}>
-      <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-0 lg:grid-cols-3 lg:items-center">
+    <section className={`${layout.features.section} ${tailwindColors.background}`}>
+      <div className={layout.features.container}>
+        <div className={layout.features.grid}>
           {/* 좌측: 텍스트 컨텐츠 (1/3) */}
           <div className="space-y-6 lg:col-span-1">
             <h2 className={typography.heading.section}>

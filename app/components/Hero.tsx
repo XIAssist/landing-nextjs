@@ -38,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={layout.heroSection}>
+    <section className={layout.hero.section}>
       {/* 동영상 배경 */}
       <video
         ref={videoRef}
@@ -54,13 +54,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40 z-[1]"></div>
 
       {/* 컨텐츠 영역 */}
-      <div className={layout.heroContainer}>
+      <div className={layout.hero.container}>
         <div className={layout.container}>
-          <div className={layout.heroContent}>
+          <div className={layout.hero.content}>
             {/* 제목 */}
             <div className="relative mb-6 inline-block">
               <h1 className={typography.heading.hero}>
-                영상 척추 분석 솔루션
+                X-ray 척추 분석 솔루션
               </h1>
             </div>
 

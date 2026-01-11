@@ -63,14 +63,14 @@ export default function AnalysisGallery({
   };
 
   return (
-    <section id="gallery" className={layout.gallerySection}>
+    <section id="gallery" className={layout.gallery.section}>
       <div className={layout.container}>
         {/* 제목과 부제 */}
-        <div className={layout.galleryHeader}>
+        <div className={layout.gallery.header}>
           <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl text-[#2196F3]">
             ANALYSIS GALLERY
           </h2>
-          <p className={layout.gallerySubtitle}>
+          <p className={layout.gallery.subtitle}>
             3번클릭, 3초안에 100가지 지표 생성
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function AnalysisGallery({
           {topImages.map((image) => (
             <div
               key={image.id}
-              className={layout.imageCard}
+              className={layout.gallery.imageCard}
             >
               {image.src ? (
                 <div className={`relative flex h-full w-full items-center justify-center ${tailwindColors.background}`}>
@@ -99,7 +99,7 @@ export default function AnalysisGallery({
                   )}
                 </div>
               ) : (
-                <div className={layout.imagePlaceholder}>
+                <div className={layout.gallery.imagePlaceholder}>
                   <p className={`${typography.body.sm} group-hover:text-gray-700`}>
                     이미지를 업로드하세요
                   </p>
@@ -115,7 +115,7 @@ export default function AnalysisGallery({
             <div
               key={image.id}
               onClick={() => image.src && handleGridImageClick(image.src)}
-              className={layout.imageCardSquare}
+              className={layout.gallery.imageCardSquare}
             >
               {image.src ? (
                 <div className={`flex h-full w-full items-center justify-center ${tailwindColors.background}`}>
@@ -126,7 +126,7 @@ export default function AnalysisGallery({
                   />
                 </div>
               ) : (
-                <div className={layout.imagePlaceholder}>
+                <div className={layout.gallery.imagePlaceholder}>
                   <p className={`${typography.body.xs} group-hover:text-gray-700`}>
                     이미지 {image.id}
                   </p>

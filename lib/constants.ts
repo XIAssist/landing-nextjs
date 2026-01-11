@@ -1,4 +1,4 @@
-// 테마 색상 상수
+// 색상 값 상수 (globals.css와 동기화)
 export const colors = {
   background: '#121C21',
   foreground: '#ededed',
@@ -40,29 +40,6 @@ export const colors = {
   },
 } as const;
 
-// 텍스트 크기 상수 (Tailwind CSS 클래스명)
-export const fontSizes = {
-  xs: 'text-xs',      // 0.75rem (12px)
-  sm: 'text-sm',      // 0.875rem (14px)
-  base: 'text-base',  // 1rem (16px)
-  lg: 'text-lg',      // 1.125rem (18px)
-  xl: 'text-xl',      // 1.25rem (20px)
-  '2xl': 'text-2xl',  // 1.5rem (24px)
-  '3xl': 'text-3xl',  // 1.875rem (30px)
-  '4xl': 'text-4xl',  // 2.25rem (36px)
-  '5xl': 'text-5xl',  // 3rem (48px)
-  '6xl': 'text-6xl',  // 3.75rem (60px)
-  '7xl': 'text-7xl',  // 4.5rem (72px)
-} as const;
-
-// 헤딩 크기 (반응형 포함)
-export const headingSizes = {
-  h1: 'text-5xl font-bold md:text-6xl lg:text-7xl',
-  h2: 'text-3xl font-bold md:text-4xl lg:text-5xl',
-  h3: 'text-2xl font-bold md:text-3xl lg:text-4xl',
-  h4: 'text-xl font-bold md:text-2xl lg:text-3xl',
-} as const;
-
 // 간격 상수 (spacing)
 export const spacing = {
   xs: '0.5rem',   // 8px
@@ -90,3 +67,4 @@ export const containerMaxWidth = {
   xl: '1280px',
   '2xl': '1536px',
 } as const;
+

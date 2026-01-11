@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import { layout, typography } from "@/lib/theme";
 
@@ -70,23 +71,36 @@ export default function Header() {
     });
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // 홈으로 이동하면서 새로고침
+    window.location.href = "/";
+  };
+
   return (
     <>
-      <header className={layout.header}>
-        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8">
+      <header className={layout.header.section}>
+        <div className={layout.header.container}>
           <div className="flex h-16 items-center justify-between">
             {/* 로고 (왼쪽) */}
             <div className="flex items-center">
-              <Link href="/" className={typography.heading.logo}>
-                XIAssist
+              <Link href="/" onClick={handleLogoClick} className="flex items-center">
+                <Image
+                  src="/img/header/xiassist_logo.png"
+                  alt="XIAssist Logo"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto object-contain"
+                  priority
+                />
               </Link>
             </div>
 
             {/* 네비게이션 (가운데) */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
               <button
                 onClick={handleOpenModal}
-                className="cursor-pointer text-base font-bold text-white md:text-lg hover:text-primary-500 transition-colors"
+                className="cursor-pointer text-lg font-bold text-white md:text-xl hover:text-primary-500 transition-colors"
               >
                 문의하기
               </button>

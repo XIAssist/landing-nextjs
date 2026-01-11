@@ -71,20 +71,53 @@ export const typography = {
 
 // 레이아웃
 export const layout = {
+  // 공통 레이아웃 클래스
   container: 'container mx-auto px-4 sm:px-6 lg:px-8',
+  containerWide: 'mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8', // Header, Features 등에서 사용
   section: 'w-full py-20 lg:py-32',
-  card: 'rounded-lg shadow-lg',
-  header: 'sticky top-0 z-50 w-full border-b border-gray-700 bg-[#121C21]/80 backdrop-blur-sm',
-  footer: 'w-full border-t border-gray-700 bg-[#121C21] py-12',
-  heroSection: 'relative min-h-screen w-full flex items-center justify-center overflow-hidden',
-  heroContainer: 'relative z-10 w-full',
-  heroContent: 'mx-auto max-w-4xl text-center',
-  gallerySection: 'w-full bg-[#121C21] py-20 lg:py-32',
-  galleryHeader: 'mb-12 text-center',
-  galleryTitle: 'mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl',
-  gallerySubtitle: 'text-lg text-gray-300 md:text-xl',
-  imageCard: 'group relative aspect-video cursor-pointer overflow-hidden transition-transform hover:scale-105',
-  imageCardSquare: 'group relative aspect-square cursor-pointer overflow-hidden transition-transform hover:scale-105',
-  imagePlaceholder: 'flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300',
+  
+  // Header 컴포넌트
+  header: {
+    section: 'sticky top-0 z-50 w-full border-b border-gray-700 bg-[#121C21]/80 backdrop-blur-sm',
+    container: 'mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8',
+  },
+  
+  // Hero 컴포넌트
+  hero: {
+    section: 'relative min-h-screen w-full flex items-center justify-center overflow-hidden',
+    container: 'relative z-10 w-full',
+    content: 'mx-auto max-w-4xl text-center',
+  },
+
+  // Features 컴포넌트
+  features: {
+    section: 'flex min-h-screen items-center py-20 lg:py-32',
+    container: 'mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8',
+    grid: 'grid gap-0 lg:grid-cols-3 lg:items-center',
+  },
+  
+  // Gallery 컴포넌트
+  gallery: {
+    section: 'w-full bg-[#121C21] py-20 lg:py-16',
+    header: 'mb-12 text-center',
+    title: 'mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl',
+    subtitle: 'text-lg text-gray-300 md:text-xl',
+    imageCard: 'group relative aspect-video cursor-pointer overflow-hidden transition-transform hover:scale-105',
+    imageCardSquare: 'group relative aspect-square cursor-pointer overflow-hidden transition-transform hover:scale-105',
+    imagePlaceholder: 'flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300',
+  },
+  
+  // ValueProposition 컴포넌트
+  valueProposition: {
+    section: 'flex items-center py-20 lg:py-16',
+    content: 'mx-auto max-w-4xl text-center',
+    subtitle: 'mb-8 text-2xl font-bold text-gray-400 md:text-3xl lg:text-4xl',
+    title: 'text-4xl font-bold text-white md:text-5xl lg:text-6xl leading-[1.6]',
+  },
+  
+  // Footer 컴포넌트
+  footer: {
+    section: 'w-full border-t border-gray-700 bg-[#121C21] py-12',
+  },
 } as const;
 
