@@ -24,13 +24,17 @@ export default function Features() {
               <span className={tailwindColors.primary.text}>진단</span>이 아닌 <span className={tailwindColors.primary.text}>지표</span>생성
             </h2>
             <p className={typography.body.large}>
-              1. 치료이유와 효과를 수치화 하여 <span className={tailwindColors.primary.text}>도수삭감 방지</span>
+              1. 치료이유와 효과를 수치화 하여 <br />
+              👉 <span className={tailwindColors.primary.text}>도수삭감 방지</span>
               <br />
-              2. 척추의 불균형을 시각화 하여 <span className={tailwindColors.primary.text}>전문성</span>을 보여주고 
+              2. 척추의 불균형을 시각화 하여 <br />
+              👉 <span className={tailwindColors.primary.text}>전문성</span>을 보여줌 
               <br />
-              3. 명확한 수치를 제공하여 환자의 <span className={tailwindColors.primary.text}>이해</span>를 돕고 환자에게 <span className={tailwindColors.primary.text}>목표</span>를 제시
+              3. 명확한 수치를 제공하여 <br />
+              👉 환자의 <span className={tailwindColors.primary.text}>이해</span>를 돕고 환자에게 <span className={tailwindColors.primary.text}>목표</span>를 제시
               <br />
-              4. 빠르게 진단후 <span className={tailwindColors.primary.text}>치료방향</span>을 환자와 치료사에게 <span className={tailwindColors.primary.text}>지시</span> 
+              4. 빠르게 지표들을 본후 <br />
+              👉 <span className={tailwindColors.primary.text}>치료방향</span>을 환자와 치료사에게 <span className={tailwindColors.primary.text}>지시</span> 
             </p>
             <div className="space-y-4">
               {/* 특징 리스트 등 추가 가능 */}

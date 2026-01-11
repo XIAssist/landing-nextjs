@@ -13,7 +13,7 @@ export default function ValueProposition() {
               <span className={tailwindColors.secondary.text}>진단</span>을 하는 AI가 아닌
             </span>
             <span className="block mb-5">
-              <span className={tailwindColors.primary.text}>Assist</span>를 하는 <span className={tailwindColors.secondary.text}>도구</span>로써
+              <span className={tailwindColors.primary.text}>Assist</span>를 하는 <span className={tailwindColors.secondary.text}>도구</span>로
             </span>
             <span className="block">
               의료진의 <span className={tailwindColors.primary.text}>가치를 입증</span>
