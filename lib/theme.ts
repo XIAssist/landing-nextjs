@@ -92,7 +92,7 @@ export const layout = {
   // Features 컴포넌트
   features: {
     section: 'flex min-h-screen items-center py-10 lg:py-32',
-    container: 'mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8',
+    container: 'container mx-auto px-4 sm:px-6 lg:px-8',
     grid: 'grid gap-0 lg:grid-cols-3 lg:items-center',
   },
   

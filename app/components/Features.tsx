@@ -7,7 +7,7 @@ export default function Features() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = () => {
-    setSelectedImage("/img/features/features.png");
+    setSelectedImage("/img/features/features_SVA.png");
   };
 
   const closeModal = () => {
@@ -44,13 +44,13 @@ export default function Features() {
           {/* 우측: 이미지 (2/3) */}
           <div className="lg:col-span-2">
             <div 
-              className={`relative h-[600px] w-full overflow-hidden lg:h-[700px] cursor-pointer ${tailwindColors.background}`}
+              className={`relative w-full overflow-hidden cursor-pointer ${tailwindColors.background} flex items-center justify-center`}
               onClick={handleImageClick}
             >
               <img
-                src="/img/features/features.png"
+                src="/img/features/features_SVA.png"
                 alt="특징 이미지"
-                className="h-full w-full object-contain"
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>
