@@ -34,15 +34,9 @@ export default function Header() {
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    // 환경 변수 검증 및 디버깅 정보
+    // 환경 변수 검증
     if (!serviceId || !templateId || !publicKey) {
       console.error("EmailJS 환경 변수가 설정되지 않았습니다.");
-      console.error("현재 환경 변수 상태:", {
-        serviceId: serviceId ? "설정됨" : "없음",
-        templateId: templateId ? "설정됨" : "없음",
-        publicKey: publicKey ? "설정됨" : "없음",
-        currentDomain: typeof window !== "undefined" ? window.location.hostname : "서버",
-      });
       alert("이메일 전송 설정에 문제가 있습니다. 관리자에게 문의해주세요.");
       setIsSending(false);
       return;
@@ -55,55 +49,16 @@ export default function Header() {
         message: formData.message, // 템플릿의 {{message}}에 사용
       };
 
-      // EmailJS 초기화 (도메인 제한 문제 해결을 위해)
-      if (typeof window !== "undefined") {
-        emailjs.init(publicKey);
-      }
-
-      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
-      console.log("이메일 전송 성공:", response);
       alert("문의가 성공적으로 전송되었습니다!");
       handleCloseModal();
     } catch (error) {
       console.error("이메일 전송 실패:", error);
-      
-      // 상세한 에러 정보 추출
-      let errorMessage = "알 수 없는 오류";
-      let errorDetails = "";
-
-      if (error instanceof Error) {
-        errorMessage = error.message;
-        errorDetails = error.stack || "";
-      } else if (typeof error === 'object' && error !== null) {
-        if ('text' in error) {
-          errorMessage = String(error.text);
-        } else if ('status' in error) {
-          errorMessage = `HTTP ${error.status}: ${error.text || "요청 실패"}`;
-        }
-      }
-
-      // 에러 타입별 안내 메시지
-      if (errorMessage.includes("Invalid public key") || errorMessage.includes("public key")) {
-        errorMessage = "EmailJS Public Key가 유효하지 않습니다. 환경 변수를 확인해주세요.";
-      } else if (errorMessage.includes("domain") || errorMessage.includes("origin")) {
-        errorMessage = "도메인이 EmailJS에 등록되지 않았습니다. EmailJS 대시보드에서 도메인을 추가해주세요.";
-      } else if (errorMessage.includes("service") || errorMessage.includes("Service")) {
-        errorMessage = "EmailJS Service ID가 유효하지 않습니다.";
-      } else if (errorMessage.includes("template") || errorMessage.includes("Template")) {
-        errorMessage = "EmailJS Template ID가 유효하지 않습니다.";
-      }
-
-      console.error("에러 상세 정보:", {
-        errorMessage,
-        errorDetails,
-        serviceId,
-        templateId,
-        publicKey: publicKey ? `${publicKey.substring(0, 10)}...` : "없음",
-        currentDomain: typeof window !== "undefined" ? window.location.hostname : "서버",
-      });
-
-      alert(`이메일 전송에 실패했습니다.\n\n${errorMessage}\n\n문제가 계속되면 관리자에게 문의해주세요.`);
+      const errorMessage = error instanceof Error ? error.message : 
+                          (typeof error === 'object' && error !== null && 'text' in error) ? String(error.text) :
+                          "알 수 없는 오류";
+      alert(`이메일 전송에 실패했습니다.\n${errorMessage}`);
     } finally {
       setIsSending(false);
     }
