@@ -13,14 +13,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "X-ray Helper - 의사의 전문적인 진단에 객관적인 지표생성",
-  description: "AI 기반 X-ray 분석 서비스. 3초 안에 모든 지표를 생성하는 X-ray Helper",
+  title: "XiAssist | 의료 척추 X-ray 분석 AI 보조 솔루션",
+  description:
+    "XiAssist는 의료진의 진단을 대체하지 않고, X-ray 기반 척추 정렬·각도·거리 지표를 AI로 자동 생성하는 의료 분석 보조 솔루션입니다.",
+  keywords: [
+    "XiAssist",
+    "엑스레이 분석",
+    "X-ray AI",
+    "의료 AI",
+    "척추 X-ray",
+    "의료 영상 분석",
+    "X-ray Helper",
+  ],
   verification: {
     other: {
       "naver-site-verification": "75e7aa021733e6005c3ecb556baee45397ce3b5a",
     },
   },
+  alternates: {
+    canonical: "https://www.xiassist.com",
+  },
 };
+
 
 export default function RootLayout({
   children,
