@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "X-ray Helper - 의사의 전문적인 진단에 객관적인 지표생성",
   description: "AI 기반 X-ray 분석 서비스. 3초 안에 모든 지표를 생성하는 X-ray Helper",
+  verification: {
+    other: {
+      "naver-site-verification": "75e7aa021733e6005c3ecb556baee45397ce3b5a",
+    },
+  },
 };
 
 export default function RootLayout({
