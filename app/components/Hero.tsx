@@ -65,8 +65,8 @@ export default function Hero() {
             </div>
 
             {/* 부제 */}
-            <p className={`mb-12 ${typography.body.large}`}>
-            의사의 전문화된 판단에 객관적 근거를 시각화
+            <p className={`mb-11 ${typography.body.large}`}>
+            의사의 전문화된 판단에 객관적 근거 시각화
             </p>
           </div>
         </div>

@@ -31,9 +31,9 @@ export default function Features() {
               👉 <span className={tailwindColors.primary.text}>전문성</span>을 보여줌 
               <br />
               3. 명확한 수치를 제공하여 <br />
-              👉 환자의 <span className={tailwindColors.primary.text}>이해</span>를 돕고 환자에게 <span className={tailwindColors.primary.text}>목표</span>를 제시
+              👉 환자의 <span className={tailwindColors.primary.text}>이해</span>를 돕고 환자에게 <span className={tailwindColors.primary.text}>목표</span> 제시
               <br />
-              4. 빠르게 지표들을 본후 <br />
+              4. 빠르게 다양한 지표들을 체크후<br />
               👉 <span className={tailwindColors.primary.text}>치료방향</span>을 환자와 치료사에게 <span className={tailwindColors.primary.text}>지시</span> 
             </p>
             <div className="space-y-4">
